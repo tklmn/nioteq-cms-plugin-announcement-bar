@@ -9,6 +9,12 @@ use Illuminate\View\View;
 
 class SettingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:manage-plugins');
+    }
+
     public function edit(): View
     {
         $settings = cms()->settings();
@@ -29,8 +35,8 @@ class SettingsController extends Controller
     {
         $request->validate([
             'message' => 'required|string|max:500',
-            'bg_color' => 'required|string|max:7',
-            'text_color' => 'required|string|max:7',
+            'bg_color' => ['required', 'regex:/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/'],
+            'text_color' => ['required', 'regex:/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/'],
             'position' => 'required|in:top,bottom',
             'link_url' => 'nullable|url|max:500',
             'link_text' => 'nullable|string|max:100',

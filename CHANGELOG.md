@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2026-07-08
+
+### Security
+- Einstellungsseite jetzt durch `permission:manage-plugins` geschuetzt — bisher konnte jeder eingeloggte Backend-User die sitewide Announcement Bar aendern.
+
+### Fixed
+- Strikte Hex-Validierung fuer `bg_color`/`text_color` (`#RGB`/`#RRGGBB`) statt blosser Laengenpruefung — verhindert CSS-Injection ueber die Farbfelder.
+
+---
+
 ## [1.0.0] - 2026-03-21
 
 ### :tada: Initial Release
