@@ -41,8 +41,7 @@
                                     <input type="color" name="bg_color" id="bg_color" value="{{ old('bg_color', $bg_color) }}"
                                            class="w-10 h-10 rounded border-gray-300 dark:border-gray-600 cursor-pointer">
                                     <input type="text" value="{{ old('bg_color', $bg_color) }}" readonly
-                                           class="w-24 text-sm rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700"
-                                           onclick="this.previousElementSibling.click()">
+                                           class="w-24 text-sm rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700">
                                 </div>
                             </div>
                             <div>
@@ -51,8 +50,7 @@
                                     <input type="color" name="text_color" id="text_color" value="{{ old('text_color', $text_color) }}"
                                            class="w-10 h-10 rounded border-gray-300 dark:border-gray-600 cursor-pointer">
                                     <input type="text" value="{{ old('text_color', $text_color) }}" readonly
-                                           class="w-24 text-sm rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700"
-                                           onclick="this.previousElementSibling.click()">
+                                           class="w-24 text-sm rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700">
                                 </div>
                             </div>
                         </div>
@@ -105,10 +103,13 @@
         </div>
     </div>
 
-    <script>
+    <script @cspNonce>
         document.addEventListener('DOMContentLoaded', function() {
             var bgInput = document.getElementById('bg_color');
             var textInput = document.getElementById('text_color');
+            // Readonly text field mirrors the color picker (was inline onclick).
+            if (bgInput.nextElementSibling) bgInput.nextElementSibling.addEventListener('click', function() { bgInput.click(); });
+            if (textInput.nextElementSibling) textInput.nextElementSibling.addEventListener('click', function() { textInput.click(); });
             var msgInput = document.getElementById('message');
             var preview = document.getElementById('bar-preview');
             var previewMsg = document.getElementById('preview-message');

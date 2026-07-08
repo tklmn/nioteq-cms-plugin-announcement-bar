@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.2] - 2026-07-08
+
+### Changed
+- CSP-Kompatibilitaet: Inline-`<script>` tragen jetzt die `@cspNonce`-Direktive, und die Inline-Event-Handler (Dismiss-Button der Bar, Farbwaehler-Spiegelung in den Settings) wurden auf `addEventListener` umgestellt. Funktioniert damit unter der strikten, nonce-basierten Content-Security-Policy des CMS.
+
+---
+
 ## [1.0.1] - 2026-07-08
 
 ### Security

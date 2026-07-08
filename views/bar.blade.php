@@ -18,17 +18,25 @@
         <a href="{{ e($abLinkUrl) }}" style="color: {{ e($abText) }};" class="ml-2 underline font-medium hover:opacity-80">{{ e($abLinkText) }}</a>
     @endif
     @if($abDismissible === '1')
-        <button onclick="document.getElementById('announcement-bar').remove();document.body.style.removeProperty('{{ $abPosition === 'bottom' ? 'padding-bottom' : 'padding-top' }}')" style="color: {{ e($abText) }};" class="absolute right-3 top-1/2 -translate-y-1/2 hover:opacity-60 transition-opacity" aria-label="Dismiss">
+        <button type="button" data-ab-dismiss style="color: {{ e($abText) }};" class="absolute right-3 top-1/2 -translate-y-1/2 hover:opacity-60 transition-opacity" aria-label="Dismiss">
             <i class="bi bi-x-lg text-xs"></i>
         </button>
     @endif
 </div>
-<script>
+<script @cspNonce>
     (function() {
         var bar = document.getElementById('announcement-bar');
         if (bar) {
             var prop = '{{ $abPosition === "bottom" ? "padding-bottom" : "padding-top" }}';
             document.body.style[prop === 'padding-top' ? 'paddingTop' : 'paddingBottom'] = bar.offsetHeight + 'px';
+
+            var dismiss = bar.querySelector('[data-ab-dismiss]');
+            if (dismiss) {
+                dismiss.addEventListener('click', function() {
+                    bar.remove();
+                    document.body.style.removeProperty(prop);
+                });
+            }
         }
     })();
 </script>
