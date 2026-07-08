@@ -10,17 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.2] - 2026-07-08
 
 ### Changed
-- CSP-Kompatibilitaet: Inline-`<script>` tragen jetzt die `@cspNonce`-Direktive, und die Inline-Event-Handler (Dismiss-Button der Bar, Farbwaehler-Spiegelung in den Settings) wurden auf `addEventListener` umgestellt. Funktioniert damit unter der strikten, nonce-basierten Content-Security-Policy des CMS.
+- CSP compatibility: inline `<script>` tags now carry the `@cspNonce` directive, and the inline event handlers (the bar's dismiss button, color-picker mirroring in the settings) were switched to `addEventListener`. This makes it work under the CMS's strict, nonce-based Content Security Policy.
 
 ---
 
 ## [1.0.1] - 2026-07-08
 
 ### Security
-- Einstellungsseite jetzt durch `permission:manage-plugins` geschuetzt — bisher konnte jeder eingeloggte Backend-User die sitewide Announcement Bar aendern.
+- Settings page is now protected by `permission:manage-plugins` — previously any logged-in backend user could change the site-wide Announcement Bar.
 
 ### Fixed
-- Strikte Hex-Validierung fuer `bg_color`/`text_color` (`#RGB`/`#RRGGBB`) statt blosser Laengenpruefung — verhindert CSS-Injection ueber die Farbfelder.
+- Strict hex validation for `bg_color`/`text_color` (`#RGB`/`#RRGGBB`) instead of a mere length check — prevents CSS injection via the color fields.
 
 ---
 
