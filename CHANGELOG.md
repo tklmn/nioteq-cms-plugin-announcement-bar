@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.3] - 2026-07-10
+
+### Added
+- Security policy (`SECURITY.md`) with coordinated vulnerability reporting, and a CycloneDX SBOM under `sbom/` (this package has no third-party runtime dependencies). Brings the plugin to supply-chain/CRA parity with the CMS core.
+
+---
+
 ## [1.0.2] - 2026-07-08
 
 ### Changed
